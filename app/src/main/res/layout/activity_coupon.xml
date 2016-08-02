@@ -18,7 +18,7 @@
     <ImageView
         android:layout_width="90dp"
         android:layout_height="90dp"
-        android:id="@+id/profileImage"
+        android:id="@+id/couponImage"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
@@ -97,6 +97,15 @@
         android:layout_toRightOf="@+id/textView3"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Coupon"
+        android:id="@+id/addCouponButton"
+        android:layout_below="@+id/editText2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="57dp" />
 
 
 </RelativeLayout>

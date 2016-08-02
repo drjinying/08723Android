@@ -61,7 +61,7 @@ public class ProfileFragment extends Fragment {
         couponButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), CouponFragment.class);
+                Intent intent = new Intent(getActivity(), CouponActivity.class);
                 startActivity(intent);
             }
         });
