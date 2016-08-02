@@ -43,7 +43,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/firstNameEditText"
+        android:id="@+id/couponNameEditText"
         android:layout_marginTop="5dp"
         android:layout_below="@+id/profileImage"
         android:layout_alignParentRight="true"
@@ -80,7 +80,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/descEditText"
         android:layout_below="@+id/textView3"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
@@ -92,8 +92,8 @@
         android:layout_height="wrap_content"
         android:inputType="date"
         android:ems="10"
-        android:id="@+id/editText2"
-        android:layout_below="@+id/editText"
+        android:id="@+id/dateEditText"
+        android:layout_below="@+id/descEditText"
         android:layout_toRightOf="@+id/textView3"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -103,7 +103,7 @@
         android:layout_height="wrap_content"
         android:text="Add Coupon"
         android:id="@+id/addCouponButton"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/dateEditText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="57dp" />
 
