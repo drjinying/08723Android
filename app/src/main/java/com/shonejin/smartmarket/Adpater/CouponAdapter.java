@@ -2,6 +2,7 @@ package com.shonejin.smartmarket.Adpater;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import java.util.List;
  */
 public class CouponAdapter extends ArrayAdapter<Coupon> {
     Context context;
+    String desc;
 
     public CouponAdapter(Context context, int resource, List<Coupon> objects) {
         super(context, resource, objects);
@@ -27,7 +29,7 @@ public class CouponAdapter extends ArrayAdapter<Coupon> {
     }
     private class ViewHolder {
         TextView txtTitle;
-        TextView txtDesc;
+
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -38,14 +40,13 @@ public class CouponAdapter extends ArrayAdapter<Coupon> {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.coupon_item, null);
             viewHolder = new ViewHolder();
-            viewHolder.txtDesc = (TextView) convertView.findViewById(R.id.couponDetail);
             viewHolder.txtTitle = (TextView) convertView.findViewById(R.id.couponName);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        viewHolder.txtDesc.setText(rowItem.description);
-        viewHolder.txtTitle.setText(rowItem.coupon_id);
+        Log.e("Coupon id",rowItem.coupon_id);
+        viewHolder.txtTitle.setText("  Coupon Id: " + rowItem.coupon_id + "\n  Coupon Description: " + rowItem.description);
 
         return convertView;
     }

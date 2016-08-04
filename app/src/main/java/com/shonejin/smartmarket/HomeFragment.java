@@ -49,15 +49,14 @@ public class HomeFragment extends Fragment {
     List<Product> ProductList;
     View view;
     ProgressDialog progress;
-    ProductAdapter adapter;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        this.view = view;
         final EditText inputEditText = (EditText) view.findViewById(R.id.editText4);
         Button searchBtn = (Button) view.findViewById(R.id.button2);
-        listView = (ListView) view.findViewById(R.id.productList);
         searchBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view)
@@ -75,13 +74,10 @@ public class HomeFragment extends Fragment {
                 progress.show();
 
                 new HttpAsyncTask().execute(RestClient.BASE_URL + "searchProducts?Keywords=" + keywords + "&SearchIndex=" + HomeActivity.catogory);
-                adapter = new ProductAdapter(getActivity(),
-                        R.layout.product_list_item, ProductList);
-                listView.setAdapter(adapter);
             }
         });
 
-
+        listView = (ListView) view.findViewById(R.id.productList);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -156,11 +152,13 @@ public class HomeFragment extends Fragment {
                     Product product = Product.fromJson(jarr.getJSONObject(i));
                     ProductList.add(product);
                 }
-
+                ProductAdapter adapter = new ProductAdapter(getActivity(),
+                        R.layout.product_list_item, ProductList);
+                listView.setAdapter(adapter);
                 progress.dismiss();
             } catch (Exception e)
             {
-                Log.i("JSON", e.getMessage());
+                Log.i("JOSN", e.getMessage());
                 return;
             }
         }

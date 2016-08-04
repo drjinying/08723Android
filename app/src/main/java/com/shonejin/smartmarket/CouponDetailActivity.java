@@ -23,9 +23,9 @@ public class CouponDetailActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coupon_detail);
-        Coupon item = (Coupon) getIntent().getSerializableExtra("Product");
+        Coupon item = (Coupon) getIntent().getSerializableExtra("Coupon");
         txtView = (TextView) findViewById(R.id.textView11);
-        txtView.setText(item.coupon_id + "\n" + item.description + "\n" + item.expire_date);
+        txtView.setText("Coupon Id : " + item.coupon_id + "\nCoupon Description : " + item.description);
         ok = (Button) findViewById(R.id.okBtn);
         delete = (Button) findViewById(R.id.button4);
         ok.setOnClickListener(new View.OnClickListener() {

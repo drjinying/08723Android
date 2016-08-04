@@ -44,10 +44,7 @@ public class CouponFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        values = new String[] {
-                "Coupon id: 2345678 \nDescription: Discount coupon",
-                "Coupon id: 7845345 \nDescription: Discount coupon"
-        };
+
     }
 
     @Nullable
@@ -55,13 +52,12 @@ public class CouponFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_coupon, container, false);
         listView = (ListView) view.findViewById(R.id.couponlist);
-        adapter = new CouponAdapter(getActivity(),
-                R.layout.product_list_item, couponList);
-        listView.setAdapter(adapter);
+        new HttpAsyncTask().execute();
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getActivity(), ProductDetailActivity.class);
+                Intent intent = new Intent(getActivity(), CouponDetailActivity.class);
                 Coupon item = couponList.get(position);
                 intent.putExtra("Coupon", item);
                 startActivity(intent);
@@ -108,11 +104,11 @@ public class CouponFragment extends Fragment {
 
     }
 
-    private class HttpAsyncTask extends AsyncTask<String, Void, String> {
+    private class HttpAsyncTask extends AsyncTask<Void, Void, String> {
         @Override
-        protected String doInBackground(String... urls) {
+        protected String doInBackground(Void... urls) {
 
-            return GET(urls[0]);
+            return GET(url);
         }
         // onPostExecute displays the results of the AsyncTask.
         @Override
@@ -126,7 +122,10 @@ public class CouponFragment extends Fragment {
                     Coupon coupon = Coupon.fromJson(jarr.getJSONObject(i));
                     couponList.add(coupon);
                 }
-
+                Log.e("Coupon", couponList.toString());
+                adapter = new CouponAdapter(getActivity(),
+                        R.layout.coupon_item, couponList);
+                listView.setAdapter(adapter);
             } catch (Exception e)
             {
                 Log.i("JSON", e.getMessage());

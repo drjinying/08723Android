@@ -42,15 +42,14 @@ public class ShoppingListFragment extends Fragment {
     View view;
     private ListView listView;
     List<Product> ProductList;
+    ProductAdapter adapter;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_home, container, false);
-        listView = (ListView) view.findViewById(R.id.productList);
+        view = inflater.inflate(R.layout.fragment_shopping_list, container, false);
+        listView = (ListView) view.findViewById(R.id.shoppinglist);
         new GetShoppingList().execute();
-        ProductAdapter adapter = new ProductAdapter(getActivity(),
-                R.layout.product_list_item, ProductList);
-        listView.setAdapter(adapter);
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -125,6 +124,9 @@ public class ShoppingListFragment extends Fragment {
                     Product product = Product.fromJson(jarr.getJSONObject(i));
                     ProductList.add(product);
                 }
+                adapter = new ProductAdapter(getActivity(),
+                        R.layout.product_list_item, ProductList);
+                listView.setAdapter(adapter);
 
             } catch (Exception e)
             {

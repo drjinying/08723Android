@@ -13,10 +13,11 @@ import java.util.Date;
 public class Coupon implements Serializable {
     // | coupon_id | user_id | description | expire_date |
     public String coupon_id;
-    public String user_id;
     public String description;
     public String expire_date;
-    public Coupon(String coupon_id, String description, String expire_date) {
+    public Coupon(String coupon_id, String description) {
+        this.coupon_id = coupon_id;
+        this.description = description;
 
     }
     public static Coupon fromJson(JSONObject jsn)
@@ -25,8 +26,7 @@ public class Coupon implements Serializable {
         {
             return new Coupon(
                     jsn.getString("coupon_id"),
-                    jsn.getString("description"),
-                    jsn.getString("expire_date")
+                    jsn.getString("description")
             );
         }
         catch (Exception e)
