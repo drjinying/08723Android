@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.shonejin.smartmarket.Model.Coupon;
+import com.shonejin.smartmarket.Model.Product;
+
 /**
  * Created by oshinrawal on 8/2/16.
  */
@@ -20,10 +23,9 @@ public class CouponDetailActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coupon_detail);
-        Intent intent = getIntent();
-        String couponData = intent.getStringExtra("Coupon");
+        Coupon item = (Coupon) getIntent().getSerializableExtra("Product");
         txtView = (TextView) findViewById(R.id.textView11);
-        txtView.setText(couponData);
+        txtView.setText(item.coupon_id + "\n" + item.description + "\n" + item.expire_date);
         ok = (Button) findViewById(R.id.okBtn);
         delete = (Button) findViewById(R.id.button4);
         ok.setOnClickListener(new View.OnClickListener() {

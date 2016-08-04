@@ -1,5 +1,7 @@
 package com.shonejin.smartmarket.Model;
 
+import com.shonejin.smartmarket.User;
+
 import java.util.List;
 
 /**
@@ -8,7 +10,7 @@ import java.util.List;
 
 public class ShoppingList {
     // | shoppinglist_id | user_id | ASIN | title | imgurl
-    public String shoppinglist_id;
-    public String user_id;
+    public static String shoppinglist_id = "1";
+    public String user_id = User.user_id;
     public List<Product> productList;
 }
